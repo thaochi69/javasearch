@@ -17,7 +17,6 @@ import java.util.ArrayList;
  * @param <T>
  */
 public abstract class Menu<T> {
-
     protected String title;
     protected ArrayList<T> mChon;
     Library l = new Library();
@@ -63,5 +62,4 @@ public abstract class Menu<T> {
             }
         }
     }
-
 }

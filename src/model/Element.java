@@ -9,8 +9,8 @@ package model;
  * @author Thao Chi
  */
 public class Element {
-    public int size_array;
-    public int[] array;
+     private int size_array;
+    private int[] array;
 
     /**
      * @return the size_array

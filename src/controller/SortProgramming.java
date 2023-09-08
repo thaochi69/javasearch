@@ -15,8 +15,7 @@ import view.Menu;
  * @author ACER
  */
 public class SortProgramming extends Menu<String> {
-
-    static String[] mc = {"Sort", "Exit"};
+    static String[] mc = {"Sort", "Search", "Exit"};
 
     protected Library library;
     protected Algorithm algorithm;
@@ -40,8 +39,10 @@ public class SortProgramming extends Menu<String> {
             case 1:
                 sort();
                 break;
-
             case 2:
+                search();
+                break;
+            case 3:
                 System.exit(0);
         }
     }
@@ -81,4 +82,33 @@ public class SortProgramming extends Menu<String> {
         sm.run();
     }
 
+    public void search() {
+        final String[] mcSearch = {"Linear Search", "Binary Search", "Exit"};
+        class SearchMenu extends Menu<String> {
+
+            public SearchMenu() {
+                super("Search Option", mcSearch);
+            }
+
+            @Override
+            public synchronized void execute(int n) {
+                algorithm.buddleSort(array);
+                library.display(array);
+                int value = library.getInt("\nEnter number to find: ", 1, 100);
+                switch (n) {
+                    case 1:
+                        System.out.println("Found value: " + value + " at index: " + algorithm.linearsearch(array, value));
+                        break;
+                    case 2:
+                        System.out.println("Found value: " + value + " at index: " + algorithm.binarySearch(array, value));
+                        break;
+                    case 3:
+                        System.exit(0);
+                        break;
+                }
+            }
+        }
+        SearchMenu sm = new SearchMenu();
+        sm.run();
+    }
 }
